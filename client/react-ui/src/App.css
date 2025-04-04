@@ -1,3 +1,4 @@
+/* Base styles */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,108 +6,222 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+:root {
+  --primary-color: #3a6ea5;
+  --secondary-color: #004e98;
+  --accent-color: #ff6b6b;
+  --background-color: #f0f7ff;
+  --card-bg: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #6c757d;
+  --border-color: #deeaf6;
+  --table-header-bg: #e6f2ff;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+body {
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Container styling */
+.main-container {
+  max-width: 1200px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Custom AI button styling */
+.custom-ai-button {
+  font-weight: 600;
+  padding: 0.75rem 2.5rem;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  border-width: 2px;
+  box-shadow: 0 4px 8px rgba(0, 78, 152, 0.1);
+  min-width: 200px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.custom-ai-button:hover:not([disabled]) {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 78, 152, 0.2);
 }
 
-.card {
-  padding: 2em;
+.custom-ai-button:active:not([disabled]) {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 78, 152, 0.2);
 }
 
-.read-the-docs {
-  color: #888;
+.custom-ai-button[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background-color: var(--primary-color);
+  color: white;
 }
 
-.App-table {
-  border-collapse: collapse;
-  width: 100%;
+.main-card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.App-th, .App-td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+/* Header section */
+.header-section {
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  color: white;
+  padding: 1.5rem;
+  border-bottom: none;
 }
 
-.App-th {
-  background-color: #f2f2f2;
-}
-
-.active-tab {
-  font-weight: bold;
-  background-color: #007bff !important;
-  color: white !important;
-}
-
-.status-value {
-  font-size: 1.2rem;
-}
-
-.status-value.trained {
-  color: green;
-}
-
-.status-value.untrained {
-  color: red;
-}
-
-.tab-content-container {
-  padding: 20px;
+/* Footer section */
+.footer-section {
   background-color: #f8f9fa;
-  border-radius: 8px;
+  padding: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Card components */
+.card {
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.card-title-custom {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  margin-bottom: 0;
+}
+
+.result-card, .species-card {
+  transition: all 0.3s ease;
+}
+
+.result-card:hover, .species-card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.result-header, .species-header {
+  background-color: var(--table-header-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Table styling */
+.result-table, .species-table {
+  margin-bottom: 0;
+}
+
+.table-header {
+  background-color: var(--table-header-bg);
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Loading state */
+.loading-container {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .loading-message {
-  font-size: 1.2rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-top: 1rem;
 }
 
-.training-parameters {
-  font-style: italic;
-  color: #6c757d;
+.spinner-border {
+  color: var(--primary-color);
+  width: 3rem;
+  height: 3rem;
 }
 
-.train-model-component {
-  background-color: #f8f9fa;
-  border-radius: 8px;
-}
-
-.train-model-component h2 {
-  font-size: 2rem;
+/* Status indicators */
+.status-value.trained {
+  color: var(--success-color);
   font-weight: bold;
 }
 
-.card {
+.status-value.untrained {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+/* Alert styling */
+.alert-info {
+  background-color: rgba(209, 236, 255, 0.7);
+  border-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.custom-alert {
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.card-title {
-  font-size: 1.5rem;
+.warning-alert {
+  background-color: #fff9db;
+  border: 1px solid #ffe58f;
+  color: #856404;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-section h1 {
+    font-size: 1.75rem;
+  }
+  
+  .card-title-custom {
+    font-size: 1.1rem;
+  }
+  
+  .custom-ai-button {
+    padding: 0.6rem 1.8rem;
+    font-size: 1rem;
+  }
+}
+
+/* Prediction and Encoding Tables */
+.prediction-table, .encoding-table {
+  margin-bottom: 0;
+}
+
+.table-header {
+  background-color: var(--table-header-bg);
+  color: var(--secondary-color);
   font-weight: bold;
+}
+
+.result-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.result-card:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.result-header {
+  background-color: var(--table-header-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-title-custom {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  margin-bottom: 0;
 }
