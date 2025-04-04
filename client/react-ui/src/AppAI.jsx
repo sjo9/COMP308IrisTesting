@@ -27,6 +27,7 @@ function AppAI() {
 
   return (
     <div>
+        <a href="/customAI" className="btn btn-outline-primary mt-4">Custom AI Model</a>
       {showLoading === false ? (
         <div>
           {showLoading && (
@@ -35,7 +36,7 @@ function AppAI() {
             </Spinner>
           )}
 
-          <h1>Prediction Results</h1>
+          <h1>DEFAULT Prediction Results</h1>
 
           {/* Table for Test Results */}
           <table className="App-table">

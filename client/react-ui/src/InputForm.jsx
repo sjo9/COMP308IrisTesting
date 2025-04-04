@@ -76,27 +76,33 @@ const InputForm = ({ onSubmit }) => {
         </div>
         <div className="mb-3 d-flex align-items-center">
           <label className="form-label me-3" style={{ width: '150px' }}>
-            Epochs
+            Epochs <span className="text-danger">*</span>
           </label>
           <input
             type="number"
             className="form-control"
             value={epochs}
             onChange={(e) => setEpochs(e.target.value)}
-            placeholder="Enter Number of Epochs"
+            min="10"
+            max="300"
+            placeholder="10–300 (Ideal)"
+            required
           />
         </div>
         <div className="mb-4 d-flex align-items-center">
           <label className="form-label me-3" style={{ width: '150px' }}>
-            Learning Rate
+            Learning Rate <span className="text-danger">*</span>
           </label>
           <input
             type="number"
             step="0.01"
+            min="0.01"
+            max="0.1"
             className="form-control"
             value={learningRate}
             onChange={(e) => setLearningRate(e.target.value)}
-            placeholder="Enter Learning Rate"
+            placeholder="0.01–0.1 (Recommended)"
+            required
           />
         </div>
         <div className="text-center">
@@ -105,6 +111,14 @@ const InputForm = ({ onSubmit }) => {
           </button>
         </div>
       </form>
+      <div className="alert alert-warning mt-4">
+  ⚠️ <strong>Warning:</strong> For best performance, keep:
+        <ul>
+          <li><strong>Epochs</strong> between <code>10</code> and <code>300</code></li>
+          <li><strong>Learning Rate</strong> between <code>0.01</code> and <code>0.1</code></li>
+        </ul>
+        Using extreme values (e.g., epochs &gt; 500 or learning rate &gt; 1.0) may slow down or crash your browser.
+      </div>
     </div>
   );
 };

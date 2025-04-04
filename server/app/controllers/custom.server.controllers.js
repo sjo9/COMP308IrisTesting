@@ -10,11 +10,12 @@ exports.trainAndPredict = function (req, res) {
     const { sepalLength, sepalWidth, petalLength, petalWidth, epochs, learningRate } = req.body;
 
     const input = new IrisData(
-        sepalLength || 5.1,
-        sepalWidth || 3.5,
-        petalLength || 1.4,
-        petalWidth || 0.2
+        parseFloat(sepalLength) || 5.1,
+        parseFloat(sepalWidth) || 3.5,
+        parseFloat(petalLength) || 1.4,
+        parseFloat(petalWidth) || 0.2
     );
+    
     const params = new ModelParameters(epochs || 100, learningRate || 0.06);
 
     if (!input.isValid() || !params.isValid()) {
@@ -90,13 +91,16 @@ exports.trainAndPredict = function (req, res) {
         results.array().then(array => {
             const predictions = array.map(row => {
                 const highestProbIndex = row.findIndex(val => val === Math.max(...row));
+
                 return ["setosa", "virginica", "versicolor"][highestProbIndex] || 'Unknown';
             });
 
-            const dataToSend = { predictions: predictions.slice(0, 3) };
+            const dataToSend = { predictions: predictions.slice(0, 3),
+                probabilities: array[0]
+             };
             console.log(dataToSend.predictions);
-
-            res.status(200).send(dataToSend.predictions);
+            console.log(dataToSend.probabilities);
+            res.status(200).send(dataToSend);
 
             trainingData.dispose();
             outputData.dispose();
