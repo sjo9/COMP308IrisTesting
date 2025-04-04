@@ -57,3 +57,56 @@
 .App-th {
   background-color: #f2f2f2;
 }
+
+.active-tab {
+  font-weight: bold;
+  background-color: #007bff !important;
+  color: white !important;
+}
+
+.status-value {
+  font-size: 1.2rem;
+}
+
+.status-value.trained {
+  color: green;
+}
+
+.status-value.untrained {
+  color: red;
+}
+
+.tab-content-container {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.loading-message {
+  font-size: 1.2rem;
+}
+
+.training-parameters {
+  font-style: italic;
+  color: #6c757d;
+}
+
+.train-model-component {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.train-model-component h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
