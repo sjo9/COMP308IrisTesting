@@ -2,6 +2,7 @@
 // Load the 'index' controller
 const index = require('../controllers/index.server.controllers');
 const prediction = require('../controllers/prediction.controller');
+const customAI = require('../controllers/custom.server.controllers');
 
 // Define the routes module's method
 module.exports = function (app) {
@@ -15,7 +16,7 @@ module.exports = function (app) {
     app.get('/run', index.trainAndPredict);
     
     // New API routes for the React app
-    app.post('/api/train', prediction.trainModel);
-    app.post('/api/predict', prediction.predictIrisSpecies);
-    app.get('/api/model-status', prediction.getModelStatus);
+    app.post('/customAI', customAI.trainAndPredict);
+    // app.post('/api/predict', prediction.predictIrisSpecies);
+    // app.get('/api/model-status', prediction.getModelStatus);
 };
